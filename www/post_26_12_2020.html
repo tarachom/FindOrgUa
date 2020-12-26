@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
   <title>Про проект</title>
   <meta charset="utf-8">
@@ -51,28 +50,81 @@
   <div class="row">
     <div class="col-sm-3">
 
-        <div class="card">
+       <div class="card">
 
-            <img class="card-img-top" src="img/statty.png" alt="">
+          <img class="card-img-top" src="img/" alt="">
           
-        </div>
+       </div>
+
+       <p></p>
 
     </div>
     <div class="col-sm-6">
-      <h2>Програмування</h2>
-      <hr/>
 
-      <ul>
-            <li>
-              <a href="/post_24_12_2020.html">Програма для відправки листів | C#</a>
-            </li>
-            <li>
-              <a href="/post_25_12_2020.html">Інструмент трасформації даних XSLT | C#, XSLT</a>
-            </li>
-            <li>
-              <a href="/post_26_12_2020.html">Перевірка наявності бази даних PostgreSQL | C#, PostgreSQL</a>
-            </li>
-       </ul>
+<h1>Перевірка наявності бази даних PostgreSQL</h1>
+
+<br/>
+<p>SQL</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+SELECT EXISTS(
+   SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('dbname')
+);
+</pre>
+
+    </div>
+</div>
+
+<br/>
+<p>C#</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using Npgsql;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
+            Connection.Open();
+
+            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
+
+            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
+
+            Console.WriteLine(nCommand.ExecuteScalar());
+
+            Console.ReadLine();
+        }
+    }
+}
+
+</pre>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
     </div>
     <div class="col-sm-3">
