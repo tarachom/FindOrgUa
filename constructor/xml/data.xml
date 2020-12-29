@@ -5,24 +5,65 @@
 		<file>index.html</file>
 		<menuactive>1</menuactive>
 	</page>
-
 	<page>
 		<title>Програмування</title>
 		<file>programing.html</file>
 		<menuactive>2</menuactive>
 	</page>
-	
 	<page>
 		<title>Про проєкт</title>
 		<file>about.html</file>
 		<menuactive>3</menuactive>
 	</page>
 
+	<!-- Статті -->
 	<page>
 		<title>Мир між людьми. Які в цьому запоруки. Як вирішувати конфліктні ситуації. Теорія і практика.</title>
 		<file>post_23_12_2020.html</file>
 		<menuactive>1</menuactive>
 	</page>
+	<page>
+		<title>Мир між людьми. Алкоголь.</title>
+		<file>post_25_12_2020-2.html</file>
+		<menuactive>1</menuactive>
+	</page>
+	<page>
+		<title>Мир між людьми. Азартні ігри.</title>
+		<file>post_26_12_2020-2.html</file>
+		<menuactive>1</menuactive>
+	</page>
+	<page>
+		<title>Монахи та ченці.</title>
+		<file>post_27_12_2020.html</file>
+		<menuactive>1</menuactive>
+	</page>
+	<page>
+		<title>Лихварство.</title>
+		<file>post_29_12_2020.html</file>
+		<menuactive>1</menuactive>
+	</page>
+	<page>
+		<title>Коран. Переклад смислів українською мовою. Михайло Якубович.</title>
+		<file>post_25_12_2020-3.html</file>
+		<menuactive>1</menuactive>
+	</page>
+	
+	<!-- Програмування -->
+	<page>
+		<title>Програма для відправки листів | C#</title>
+		<file>post_24_12_2020.html</file>
+		<menuactive>2</menuactive>
+	</page>
 
-
+	<page>
+		<title>Інструмент трасформації даних XSLT | C#, XSLT</title>
+		<file>post_25_12_2020.html</file>
+		<menuactive>2</menuactive>
+	</page>
+	<page>
+		<title>Перевірка наявності бази даних PostgreSQL</title>
+		<file>post_26_12_2020.html</file>
+		<menuactive>2</menuactive>
+	</page>
+	
 </root>

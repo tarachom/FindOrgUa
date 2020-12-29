@@ -2,7 +2,7 @@
 <html>
   <head>
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Головна</title>
+    <title>Перевірка наявності бази даних PostgreSQL</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
@@ -16,58 +16,94 @@
       <h1>В пошуках мудрості</h1>
     </div><nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-bottom:20px;"><a class="navbar-brand" href="/">find.org.ua</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="index.html" class="nav-link active">Статті</a></li>
-          <li class="nav-item"><a href="programing.html" class="nav-link ">Програмування</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link ">Статті</a></li>
+          <li class="nav-item"><a href="programing.html" class="nav-link active">Програмування</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link ">Про проєкт</a></li>
         </ul>
       </div></nav><div class="container-fluid">
-      <div class="row"><div class="col-sm-9">
-    <h2>Статті</h2>
-    <hr/>
+      <div class="row">
+    <div class="col-sm-3">
 
-    <ul>
-        <li>
-            <a href="/post_23_12_2020.html">Мир між людьми. Які в цьому запоруки. Як вирішувати конфліктні ситуації. Теорія і практика.</a>
-        </li>
-        <li>
-            <a href="/post_25_12_2020-2.html">Мир між людьми. Алкоголь.</a>
-        </li>
-        <li>
-            <a href="/post_26_12_2020-2.html">Мир між людьми. Азартні ігри.</a>
-        </li>
-        <li>
-            <a href="/post_27_12_2020.html">Монахи та ченці.</a>
-        </li>
-        <li>
-            <a href="/post_29_12_2020.html">Лихварство.</a>
-        </li>
-        <li>
-            <a href="/post_25_12_2020-3.html">Коран. Переклад смислів українською мовою. Михайло Якубович.</a>
-        </li>
-    </ul>
+       <div class="card">
+
+          <img class="card-img-top" src="img/" alt="">
+          
+       </div>
+
+       <p></p>
+
+    </div>
+    <div class="col-sm-6">
+
+<h1>Перевірка наявності бази даних PostgreSQL</h1>
 
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<p>SQL</p>
 
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+SELECT EXISTS(
+   SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('dbname')
+);
+</pre>
+
+    </div>
 </div>
-<div class="col-sm-3">
 
-</div></div>
+<br/>
+<p>C#</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using Npgsql;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
+            Connection.Open();
+
+            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
+
+            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
+
+            Console.WriteLine(nCommand.ExecuteScalar());
+
+            Console.ReadLine();
+        }
+    }
+}
+
+</pre>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+    </div>
+    <div class="col-sm-3">
+
+    </div></div>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
       <p>2020</p>
