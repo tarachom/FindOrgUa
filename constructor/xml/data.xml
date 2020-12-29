@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<page>
+		<title>Головна</title>
+		<file>index.html</file>
+		<menuactive>1</menuactive>
+	</page>
+
+	<page>
+		<title>Програмування</title>
+		<file>programing.html</file>
+		<menuactive>2</menuactive>
+	</page>
+	
+	<page>
+		<title>Про проєкт</title>
+		<file>about.html</file>
+		<menuactive>3</menuactive>
+	</page>
+
+	<page>
+		<title>Мир між людьми. Які в цьому запоруки. Як вирішувати конфліктні ситуації. Теорія і практика.</title>
+		<file>post_23_12_2020.html</file>
+		<menuactive>1</menuactive>
+	</page>
+
+
+</root>
