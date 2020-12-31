@@ -54,7 +54,6 @@
 		<file>post_24_12_2020.html</file>
 		<menuactive>2</menuactive>
 	</page>
-
 	<page>
 		<title>Інструмент трасформації даних XSLT | C#, XSLT</title>
 		<file>post_25_12_2020.html</file>
@@ -65,5 +64,49 @@
 		<file>post_26_12_2020.html</file>
 		<menuactive>2</menuactive>
 	</page>
-	
+	<page>
+		<title>Валідація Email | C#</title>
+		<file>post_31_12_2020.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>Підключення до PostgreSQL з C#</title>
+		<file>post_31_12_2020-2.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>PostgreSQL 10 | Numeric Types</title>
+		<file>post_31_12_2020-3.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>PostgreSQL | Перетворення типів стовпців: text в text[], integer в integer[]</title>
+		<file>post_31_12_2020-4.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>Erlang | Web Server</title>
+		<file>post_31_12_2020-5.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>Erlang | Shell commands</title>
+		<file>post_31_12_2020-6.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>Erlang | Scripts</title>
+		<file>post_31_12_2020-7.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>Http web server | C#</title>
+		<file>post_31_12_2020-8.html</file>
+		<menuactive>2</menuactive>
+	</page>
+  <page>
+		<title>Обмін з програмою через файлову систему | 1C 7.7</title>
+		<file>post_31_12_2020-9.html</file>
+		<menuactive>2</menuactive>
+	</page>
 </root>

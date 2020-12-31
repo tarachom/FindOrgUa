@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "" "">
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Erlang | Shell commands</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FQGF7F91SM');
+    </script></head>
+  <body>
+    <div class="jumbotron jumbotron-fluid" style="padding-left:20px;margin-bottom:0;">
+      <h1>В пошуках мудрості</h1>
+    </div><nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-bottom:20px;"><a class="navbar-brand" href="/">find.org.ua</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Статті</a></li>
+          <li class="nav-item"><a href="programing.html" class="nav-link active">Програмування</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link ">Про проєкт</a></li>
+        </ul>
+      </div></nav><div class="container-fluid">
+      <div class="row">
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>Erlang | Shell commands</h1>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+%%
+%%  Erlang shell commands
+%%
+
+b()        -- display all variable bindings
+e(N)       -- repeat the expression in query &lt;N&gt;
+f()        -- forget all variable bindings
+f(X)       -- forget the binding of variable X
+h()        -- history
+history(N) -- set how many previous commands to keep
+results(N) -- set how many previous command results to keep
+catch_exception(B) -- how exceptions are handled
+v(N)       -- use the value of query &lt;N&gt;
+rd(R,D)    -- define a record
+rf()       -- remove all record information
+rf(R)      -- remove record information about R
+rl()       -- display all record information
+rl(R)      -- display record information about R
+rp(Term)   -- display Term using the shell's record information
+rr(File)   -- read record information from File (wildcards allowed)
+rr(F,R)    -- read selected record information from file(s)
+rr(F,R,O)  -- read selected record information with options
+
+bt(Pid)    -- stack backtrace for a process
+c(File)    -- compile and load code in &lt;File&gt;
+cd(Dir)    -- change working directory
+flush()    -- flush any messages sent to the shell
+help()     -- help info
+i()        -- information about the system
+ni()       -- information about the networked system
+i(X,Y,Z)   -- information about pid &lt;X,Y,Z&gt;
+l(Module)  -- load or reload module
+lc([File]) -- compile a list of Erlang modules
+ls()       -- list files in the current directory
+ls(Dir)    -- list files in directory &lt;Dir&gt;
+m()        -- which modules are loaded
+m(Mod)     -- information about module &lt;Mod&gt;
+memory()   -- memory allocation information
+memory(T)  -- memory allocation information of type &lt;T&gt;
+nc(File)   -- compile and load code in &lt;File&gt; on all nodes
+nl(Module) -- load module on all nodes
+pid(X,Y,Z) -- convert X,Y,Z to a Pid
+pwd()      -- print working directory
+q()        -- quit - shorthand for init:stop()
+regs()     -- information about registered processes
+nregs()    -- information about all registered processes
+xm(M)      -- cross reference check a module
+y(File)    -- generate a Yecc parser
+</pre>
+
+    </div>
+</div>
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
+      <p>2021</p>
+    </div>
+  </body>
+</html>

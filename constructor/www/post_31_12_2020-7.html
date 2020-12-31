@@ -2,7 +2,7 @@
 <html>
   <head>
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Перевірка наявності бази даних PostgreSQL</title>
+    <title>Erlang | Scripts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
@@ -24,80 +24,74 @@
       <div class="row">
     <div class="col-sm-3">
        <div class="card">
-          <img class="card-img-top" src="img/postgresql.jpg" alt="">
+          <img class="card-img-top" src="img/" alt="">
        </div>
     </div>
     <div class="col-sm-6">
 
-<h1>Перевірка наявності бази даних PostgreSQL</h1>
+<h1>Erlang | Scripts</h1>
 
-<br/>
-<p>SQL</p>
+<p>Тестування взаємодії Erlang з програмою на C# через протокол TCP.<br>На Erlang запущений веб сервер. 
+Детальніше в статті <a href="/post_31_12_2020-5.html" target="_blank">Erlang | Web Server</a>. 
+<br />Скрипт запускається з браузера http://127.0.0.1/erl/scripts/client.</p>
 
-<div class="card bg-light text-dark">
-    <div class="card-body">
+<p>Проект на GitHub: <a href="https://github.com/tarachom/ErlangSatelite" target="_blank">https://github.com/tarachom/ErlangSatelite</a></p>
 
-<pre>
-SELECT EXISTS(
-   SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('dbname')
-);
-</pre>
-
-    </div>
-</div>
-
-<br/>
-<p>C#</p>
+<h4>scripts.erl</h4>
 
 <div class="card bg-light text-dark">
     <div class="card-body">
 
 <pre>
-using System;
-using Npgsql;
+-module(scripts).
+-export([send/2, stop/1, client/3, service/3]).
 
-namespace ConsoleApp1
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
-            Connection.Open();
+send(Pid, Msg) -&gt;
+    Pid ! {send, Msg}.
 
-            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
+stop(Pid) -&gt;
+    Pid ! stop.
 
-            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
+client(SessionID, Env, _Input) -&gt;
+    {ok, Socket} = gen_tcp:connect("localhost", 5555, [binary, {active, true}, {packet, raw}]),
+    gen_tcp:send(Socket, ["" | format(Env)]),
+    loop(Socket, SessionID).
 
-            Console.WriteLine(nCommand.ExecuteScalar());
+loop(Socket, SessionID) -&gt;
+    receive
+         {send, Msg} -&gt;
+                gen_tcp:send(Socket, Msg),
+                loop(Socket, SessionID);
+         {tcp, Socket, Msg} -&gt;
+		mod_esi:deliver(SessionID, ["Content-Type: text/html; charset=utf-8\r\n\r\n", Msg]),
+		%io:fwrite("Send: ~p ~n", [Msg]),
+                gen_tcp:close(Socket);
+         stop -&gt;
+                gen_tcp:close(Socket)
+         after 200 -&gt;
+                loop(Socket, SessionID)
+    end.
 
-            Console.ReadLine();
-        }
-    }
-}
+service(SessionID, _Env, _Input) -&gt; mod_esi:deliver(SessionID, [ 
+   "Content-Type: text/html\r\n\r\n", "&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;/html&gt;" ]).
 
+format([]) -&gt;
+    "";
+
+format([{Key, Value} | Env]) -&gt;
+    [io_lib:format("[~p: ~p]&lt;br/&gt;\~n", [Key, Value]) | format(Env)].
 </pre>
 
     </div>
 </div>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
     </div>
     <div class="col-sm-3">
-
-    </div></div>
+          
+    </div>
+  </div>
+</div>
+</div>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
       <p>2021</p>

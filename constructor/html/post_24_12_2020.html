@@ -1,31 +1,115 @@
 ﻿
     <div class="col-sm-3">
        <div class="card">
-          <img class="card-img-top" src="img/" alt="">
+          <img class="card-img-top" src="img/mail.png" alt="">
        </div>
-       <p></p>
+
+       <br/>
+
+       <p>
+          <img src="img/git.png" /> <a href="https://github.com/tarachom/Subscriber">Проєкт Subscriber на GitHub</a>
+       </p>
+
     </div>
     <div class="col-sm-6">
 
 <h1>Програма для відправки листів | C#</h1>
 
-<p></p>
+<br/>
+<p>Функція відправляє лист у форматі Html</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using System.Net;
+using System.Net.Mail;
+using System.IO;
+using System.Xml.XPath;
+using System.Xml.Xsl;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Threading;
+using System.Reflection;
+
+public static bool SendMail(string email, string subject, string company, string fullPathToHtmlBodyFile, SmtpInfo SmtpInfoItem)
+{
+    MailAddress fromMailAddress = new MailAddress(SmtpInfoItem.Email, company);
+    MailAddress toMailAddress = new MailAddress(email);
+
+    try
+    {
+        Console.Write(" -> " + email + ": ");
+
+        using (MailMessage mail = new MailMessage(fromMailAddress, toMailAddress))
+        using (SmtpClient client = new SmtpClient(SmtpInfoItem.SmtpServer, SmtpInfoItem.Port))
+        {
+            mail.Subject = subject;
+            mail.IsBodyHtml = true;
+            mail.Body = File.ReadAllText(fullPathToHtmlBodyFile);
+                    
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Timeout = 20000;
+            client.Credentials = new NetworkCredential(fromMailAddress.Address, SmtpInfoItem.Pass);
+            client.EnableSsl = true;
+
+            client.Send(mail);
+        }
+
+        Console.Write(" send\n");
+        return true;
+    }
+    catch (Exception e)
+    {
+        Console.Write(" error: " + e.Message + "\n");
+        return false;
+    }
+}
+</pre>
+
+    </div>
+</div>
 
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
+<p>Клас для Smtp інформації</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+public class SmtpInfo
+{
+	public SmtpInfo(string smtpServer, string email, string pass, int port)
+	{
+		SmtpServer = smtpServer;
+		Email = email;
+		Pass = pass;
+		Port = port;
+	}
+
+	public string SmtpServer { get; set; }
+	public string Email { get; set; }
+	public string Pass { get; set; }
+	public int Port { get; set; }
+}
+</pre>
+
+    </div>
+</div>
 
     </div>
     <div class="col-sm-3">
+
+        <p>Також</p>
+
+        <ul>
+            <li>
+                <a href="/post_31_12_2020.html">Валідація Email | C#</a>
+            </li>
+        </ul>
 
     </div>
   </div>

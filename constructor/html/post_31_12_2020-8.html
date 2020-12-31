@@ -1,0 +1,72 @@
+﻿
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>Http web server | C#</h1>
+
+<p>Приклад прийому даних методом POST, GET та завантаження файлу на сервер.<br/></p>
+
+<p>Приклад на GitHub: 
+<a href="https://github.com/tarachom/WebServer/blob/master/Example.cs">https://github.com/tarachom/WebServer/blob/master/Example.cs</a></p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+static void Test()
+{
+    HttpListener listener = new HttpListener();
+
+    listener.Prefixes.Add("http://localhost:8888/");
+
+    listener.Start();
+    Console.WriteLine("Listening...");
+    while (true)
+    {
+        HttpListenerContext context = listener.GetContext();
+        HttpListenerRequest request = context.Request;
+
+        string documentContents;
+        using (Stream receiveStream = request.InputStream)
+        {
+            using (StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8))
+            {
+                documentContents = readStream.ReadToEnd();
+            }
+        }
+        Console.WriteLine($"Recived request for {request.Url}");
+        Console.WriteLine(documentContents);
+
+        // Obtain a response object.
+        HttpListenerResponse response = context.Response;
+        // Construct a response.
+        string responseString =
+        "&lt;HTML&gt;&lt;BODY&gt;" + "" +
+        "&lt;form method=\"post\"&gt;First name: &lt;input type=\"text\" name=\"firstname\" /&gt;&lt;br /&gt;Last name: &lt;input type=\"text\" name=\"lastname\" /&gt;&lt;input type=\"submit\" value=\"Submit\" /&gt;&lt;/form&gt;" +
+        "&lt;form method =\"post\" enctype=\"multipart/form-data\"&gt;&lt;input id=\"fileUp\" name=\"fileUpload\" type=\"file\" /&gt;&lt;input type=\"submit\" /&gt;&lt;/form&gt;" +
+        "&lt;/BODY&gt;&lt;/HTML&gt;";
+        byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+        // Get a response stream and write the response to it.
+        response.ContentLength64 = buffer.Length;
+        System.IO.Stream output = response.OutputStream;
+        output.Write(buffer, 0, buffer.Length);
+        // You must close the output stream.
+        output.Close();
+    }
+    listener.Stop();
+}
+</pre>
+
+    </div>
+</div>
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>

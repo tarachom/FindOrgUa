@@ -1,0 +1,71 @@
+﻿
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>Підключення до PostgreSQL з C#</h1>
+
+<p>
+    Для роботи використовується драйвер Npgsql <a href="https://www.npgsql.org/doc">https://www.npgsql.org</a>
+</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using Npgsql;
+
+static void TestPostgres()
+{
+    NpgsqlConnection nCon = new NpgsqlConnection(
+          "Server=localhost;User Id=postgres;Password=1;Database=test;");
+
+    nCon.Open();
+
+    //Додавання нових записів у таблицю
+    NpgsqlCommand nCommand = new NpgsqlCommand(
+         @"INSERT INTO public.tovary(uid, name, code, description) " +
+          "VALUES(@uid, @name, @code, @description)", nCon);
+
+    nCommand.Parameters.Add(new NpgsqlParameter("uid", null));
+    nCommand.Parameters.Add(new NpgsqlParameter("name", ""));
+    nCommand.Parameters.Add(new NpgsqlParameter("code", "001"));
+    nCommand.Parameters.Add(new NpgsqlParameter("description", "desc"));
+
+    //Додаєм 10 записів і модифікуємо значення полів
+    for (int i = 0; i < 10; i++)
+    {
+        nCommand.Parameters["uid"].Value = Guid.NewGuid();
+        nCommand.Parameters["name"].Value = "Name " + i.ToString();
+
+        Console.WriteLine(nCommand.ExecuteNonQuery());
+    }
+
+    //Вибірка з таблиці
+    NpgsqlCommand nCommand2 = new NpgsqlCommand(
+       "SELECT * FROM public.tovary", nCon);
+
+    NpgsqlDataReader reader = nCommand2.ExecuteReader();
+    while (reader.Read())
+    {
+        Console.WriteLine(reader["uid"]);
+    }
+    reader.Close();
+
+    nCon.Close();
+}
+</pre>
+
+    </div>
+</div>
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>

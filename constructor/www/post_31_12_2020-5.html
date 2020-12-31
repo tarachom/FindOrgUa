@@ -2,7 +2,7 @@
 <html>
   <head>
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Перевірка наявності бази даних PostgreSQL</title>
+    <title>Erlang | Web Server</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
@@ -24,80 +24,113 @@
       <div class="row">
     <div class="col-sm-3">
        <div class="card">
-          <img class="card-img-top" src="img/postgresql.jpg" alt="">
+          <img class="card-img-top" src="img/" alt="">
        </div>
     </div>
     <div class="col-sm-6">
 
-<h1>Перевірка наявності бази даних PostgreSQL</h1>
+<h1>Erlang | Web Server</h1>
 
-<br/>
-<p>SQL</p>
+<p>Робочий каталог  C:/Erlang </p>
+<h4>httpnet.erl | Конфігурація веб сервера</h4>
 
 <div class="card bg-light text-dark">
     <div class="card-body">
 
 <pre>
-SELECT EXISTS(
-   SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('dbname')
-);
+-module(httpnet). 
+-export([start/0]). 
+
+start() -&gt;
+   inets:start(httpd, 
+[
+    {modules, [
+        mod_alias,
+        mod_auth,
+        mod_esi,
+        mod_actions,
+        mod_cgi,
+        mod_get,
+        mod_head,
+        mod_dir,
+        mod_log,
+        mod_disk_log
+    ]},
+
+    {port, 80},
+    {bind_address, "127.0.0.1"},
+    {server_name, "httpnet"},
+
+    {server_root, "C://HttpNet"},
+    {document_root, "C://HttpNet/htdocs"},
+    {directory_index, ["index.html"]},
+
+    {erl_script_alias, {"/erl", [scripts]}},
+
+    {error_log, "error.log"},
+    {security_log, "security.log"},
+    {transfer_log, "transfer.log"},
+
+    {mime_types, [
+        {"html", "text/html"},
+        {"css", "text/css"},
+        {"js", "application/x-javascript"}
+    ]},
+    {mime_type, "application/octet-stream"}
+]).
 </pre>
 
     </div>
 </div>
 
 <br/>
-<p>C#</p>
+
+<h4>Запуск веб сервера</h4>
 
 <div class="card bg-light text-dark">
     <div class="card-body">
 
 <pre>
-using System;
-using Npgsql;
+&gt; cd("C:/Erlang").
+c:/erlang
+ok
 
-namespace ConsoleApp1
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
-            Connection.Open();
+&gt; inets:start().
+ok
 
-            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
+&gt; httpnet:start().
+{ok,&lt;0.115.0&gt;}
 
-            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
-
-            Console.WriteLine(nCommand.ExecuteScalar());
-
-            Console.ReadLine();
-        }
-    }
-}
-
+&gt; httpd:info(&lt;0.115.0&gt;).
+[{mime_types,[{"js","application/x-javascript"},
+              {"css","text/css"},
+              {"html","text/html"}]},
+ {server_name,"httpnet"},
+ {bind_address,{127,0,0,1}},
+ {modules,[mod_alias,mod_auth,mod_esi,mod_actions,mod_cgi,
+           mod_get,mod_head,mod_dir,mod_log,mod_disk_log]},
+ {mime_type,"application/octet-stream"},
+ {server_root,"C://HttpNet"},
+ {erl_script_alias,{"/erl",[scripts]}},
+ {directory_index,["index.html"]},
+ {port,80},
+ {transfer_log,&lt;0.123.0&gt;},
+ {security_log,&lt;0.122.0&gt;},
+ {error_log,&lt;0.121.0&gt;},
+ {document_root,"C://HttpNet/htdocs"}]
 </pre>
 
     </div>
 </div>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 
     </div>
     <div class="col-sm-3">
-
-    </div></div>
+          
+    </div>
+  </div>
+</div>
+</div>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
       <p>2021</p>

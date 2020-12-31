@@ -18,11 +18,35 @@
 				<xsl:call-template name="body" />
 				<xsl:call-template name="footer" />
 			</body>
-						
+
 		</html>
 		
 	</xsl:template>
 
+  <xsl:template name="head">
+
+    <title>
+      <xsl:value-of select="$Title"/>
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <script src="bootstrap/jquery.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+
+    <!-- Google -->
+    <script data-ad-client="ca-pub-8744330757055064" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FQGF7F91SM');
+    </script>
+
+  </xsl:template>
+  
 	<xsl:template name="top">
 		
 		<div class="jumbotron jumbotron-fluid" style="padding-left:20px;margin-bottom:0;">
@@ -78,7 +102,7 @@
 		</nav>
 		
 	</xsl:template>
-
+  
 	<xsl:template name="body">
 
 		<div class="container-fluid">
@@ -88,35 +112,11 @@
 		</div>
 		
 	</xsl:template>
-
-	<xsl:template name="head">
-
-		<title>
-			<xsl:value-of select="$Title"/>
-		</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
-		<script src="bootstrap/jquery.min.js"></script>
-		<script src="bootstrap/popper.min.js"></script>
-		<script src="bootstrap/bootstrap.min.js"></script>
-
-		<!-- Google -->
-		<script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-FQGF7F91SM');
-		</script>
-
-	</xsl:template>
-
+  
 	<xsl:template name="footer">
 		
 		<div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
-			<p>2020</p>
+			<p>2021</p>
 		</div>
 		
 	</xsl:template>

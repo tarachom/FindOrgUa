@@ -1,0 +1,70 @@
+﻿
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>Erlang | Scripts</h1>
+
+<p>Тестування взаємодії Erlang з програмою на C# через протокол TCP.<br>На Erlang запущений веб сервер. 
+Детальніше в статті <a href="/post_31_12_2020-5.html" target="_blank">Erlang | Web Server</a>. 
+<br />Скрипт запускається з браузера http://127.0.0.1/erl/scripts/client.</p>
+
+<p>Проект на GitHub: <a href="https://github.com/tarachom/ErlangSatelite" target="_blank">https://github.com/tarachom/ErlangSatelite</a></p>
+
+<h4>scripts.erl</h4>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+-module(scripts).
+-export([send/2, stop/1, client/3, service/3]).
+
+send(Pid, Msg) -&gt;
+    Pid ! {send, Msg}.
+
+stop(Pid) -&gt;
+    Pid ! stop.
+
+client(SessionID, Env, _Input) -&gt;
+    {ok, Socket} = gen_tcp:connect("localhost", 5555, [binary, {active, true}, {packet, raw}]),
+    gen_tcp:send(Socket, ["" | format(Env)]),
+    loop(Socket, SessionID).
+
+loop(Socket, SessionID) -&gt;
+    receive
+         {send, Msg} -&gt;
+                gen_tcp:send(Socket, Msg),
+                loop(Socket, SessionID);
+         {tcp, Socket, Msg} -&gt;
+		mod_esi:deliver(SessionID, ["Content-Type: text/html; charset=utf-8\r\n\r\n", Msg]),
+		%io:fwrite("Send: ~p ~n", [Msg]),
+                gen_tcp:close(Socket);
+         stop -&gt;
+                gen_tcp:close(Socket)
+         after 200 -&gt;
+                loop(Socket, SessionID)
+    end.
+
+service(SessionID, _Env, _Input) -&gt; mod_esi:deliver(SessionID, [ 
+   "Content-Type: text/html\r\n\r\n", "&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;/html&gt;" ]).
+
+format([]) -&gt;
+    "";
+
+format([{Key, Value} | Env]) -&gt;
+    [io_lib:format("[~p: ~p]&lt;br/&gt;\~n", [Key, Value]) | format(Env)].
+</pre>
+
+    </div>
+</div>
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Перевірка наявності бази даних PostgreSQL</title>
+    <title>Підключення до PostgreSQL з C#</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
@@ -24,30 +24,16 @@
       <div class="row">
     <div class="col-sm-3">
        <div class="card">
-          <img class="card-img-top" src="img/postgresql.jpg" alt="">
+          <img class="card-img-top" src="img/" alt="">
        </div>
     </div>
     <div class="col-sm-6">
 
-<h1>Перевірка наявності бази даних PostgreSQL</h1>
+<h1>Підключення до PostgreSQL з C#</h1>
 
-<br/>
-<p>SQL</p>
-
-<div class="card bg-light text-dark">
-    <div class="card-body">
-
-<pre>
-SELECT EXISTS(
-   SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('dbname')
-);
-</pre>
-
-    </div>
-</div>
-
-<br/>
-<p>C#</p>
+<p>
+    Для роботи використовується драйвер Npgsql <a href="https://www.npgsql.org/doc">https://www.npgsql.org</a>
+</p>
 
 <div class="card bg-light text-dark">
     <div class="card-body">
@@ -56,48 +42,57 @@ SELECT EXISTS(
 using System;
 using Npgsql;
 
-namespace ConsoleApp1
+static void TestPostgres()
 {
-    class Program
+    NpgsqlConnection nCon = new NpgsqlConnection(
+          "Server=localhost;User Id=postgres;Password=1;Database=test;");
+
+    nCon.Open();
+
+    //Додавання нових записів у таблицю
+    NpgsqlCommand nCommand = new NpgsqlCommand(
+         @"INSERT INTO public.tovary(uid, name, code, description) " +
+          "VALUES(@uid, @name, @code, @description)", nCon);
+
+    nCommand.Parameters.Add(new NpgsqlParameter("uid", null));
+    nCommand.Parameters.Add(new NpgsqlParameter("name", ""));
+    nCommand.Parameters.Add(new NpgsqlParameter("code", "001"));
+    nCommand.Parameters.Add(new NpgsqlParameter("description", "desc"));
+
+    //Додаєм 10 записів і модифікуємо значення полів
+    for (int i = 0; i < 10; i++)
     {
-        static void Main(string[] args)
-        {
-            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
-            Connection.Open();
+        nCommand.Parameters["uid"].Value = Guid.NewGuid();
+        nCommand.Parameters["name"].Value = "Name " + i.ToString();
 
-            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
-
-            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
-
-            Console.WriteLine(nCommand.ExecuteScalar());
-
-            Console.ReadLine();
-        }
+        Console.WriteLine(nCommand.ExecuteNonQuery());
     }
-}
 
+    //Вибірка з таблиці
+    NpgsqlCommand nCommand2 = new NpgsqlCommand(
+       "SELECT * FROM public.tovary", nCon);
+
+    NpgsqlDataReader reader = nCommand2.ExecuteReader();
+    while (reader.Read())
+    {
+        Console.WriteLine(reader["uid"]);
+    }
+    reader.Close();
+
+    nCon.Close();
+}
 </pre>
 
     </div>
 </div>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
     </div>
     <div class="col-sm-3">
-
-    </div></div>
+          
+    </div>
+  </div>
+</div>
+</div>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
       <p>2021</p>

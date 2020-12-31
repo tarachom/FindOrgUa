@@ -1,0 +1,32 @@
+﻿
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>PostgreSQL | Перетворення типів стовпців: text в text[], integer в integer[]</h1>
+
+<p>Приклад перетворення простих типів в масив.</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+
+UPDATE public.test
+    SET text_mas = (SELECT array_agg(test2.text) FROM public.test AS test2 
+                   WHERE test2.uid = test.uid)
+
+</pre>
+
+    </div>
+</div>
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>

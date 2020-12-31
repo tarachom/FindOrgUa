@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html PUBLIC "" "">
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>PostgreSQL 10 | Numeric Types</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FQGF7F91SM');
+    </script></head>
+  <body>
+    <div class="jumbotron jumbotron-fluid" style="padding-left:20px;margin-bottom:0;">
+      <h1>В пошуках мудрості</h1>
+    </div><nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-bottom:20px;"><a class="navbar-brand" href="/">find.org.ua</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Статті</a></li>
+          <li class="nav-item"><a href="programing.html" class="nav-link active">Програмування</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link ">Про проєкт</a></li>
+        </ul>
+      </div></nav><div class="container-fluid">
+      <div class="row">
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>PostgreSQL 10 | Numeric Types</h1>
+
+<p>Документація 
+<a href="https://www.postgresql.org/docs/10/datatype-numeric.html">https://www.postgresql.org/docs/10/datatype-numeric.html</a></p>
+
+<table class="table" summary="Numeric Types" border="1">
+<thead>
+<tr>
+<th>Name</th>
+<th>Storage Size</th>
+<th>Description</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="type">smallint</code></td>
+<td>2 bytes</td>
+<td>small-range integer</td>
+<td>-32768 to +32767</td>
+</tr>
+<tr>
+<td><code class="type">integer</code></td>
+<td>4 bytes</td>
+<td>typical choice for integer</td>
+<td>-2147483648 to +2147483647</td>
+</tr>
+<tr>
+<td><code class="type">bigint</code></td>
+<td>8 bytes</td>
+<td>large-range integer</td>
+<td>-9223372036854775808 to +9223372036854775807</td>
+</tr>
+<tr>
+<td><code class="type">decimal</code></td>
+<td>variable</td>
+<td>user-specified precision, exact</td>
+<td>up to 131072 digits before the decimal point; up to 16383 digits after the decimal point</td>
+</tr>
+<tr>
+<td><code class="type">numeric</code></td>
+<td>variable</td>
+<td>user-specified precision, exact</td>
+<td>up to 131072 digits before the decimal point; up to 16383 digits after the decimal point</td>
+</tr>
+<tr>
+<td><code class="type">real</code></td>
+<td>4 bytes</td>
+<td>variable-precision, inexact</td>
+<td>6 decimal digits precision</td>
+</tr>
+<tr>
+<td><code class="type">double precision</code></td>
+<td>8 bytes</td>
+<td>variable-precision, inexact</td>
+<td>15 decimal digits precision</td>
+</tr>
+<tr>
+<td><code class="type">smallserial</code></td>
+<td>2 bytes</td>
+<td>small autoincrementing integer</td>
+<td>1 to 32767</td>
+</tr>
+<tr>
+<td><code class="type">serial</code></td>
+<td>4 bytes</td>
+<td>autoincrementing integer</td>
+<td>1 to 2147483647</td>
+</tr>
+<tr>
+<td><code class="type">bigserial</code></td>
+<td>8 bytes</td>
+<td>large autoincrementing integer</td>
+<td>1 to 9223372036854775807</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
+      <p>2021</p>
+    </div>
+  </body>
+</html>

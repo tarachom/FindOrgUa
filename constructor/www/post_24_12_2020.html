@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-FQGF7F91SM');
-		</script></head>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FQGF7F91SM');
+    </script></head>
   <body>
     <div class="jumbotron jumbotron-fluid" style="padding-left:20px;margin-bottom:0;">
       <h1>В пошуках мудрості</h1>
@@ -24,31 +24,115 @@
       <div class="row">
     <div class="col-sm-3">
        <div class="card">
-          <img class="card-img-top" src="img/" alt="">
+          <img class="card-img-top" src="img/mail.png" alt="">
        </div>
-       <p></p>
+
+       <br/>
+
+       <p>
+          <img src="img/git.png" /> <a href="https://github.com/tarachom/Subscriber">Проєкт Subscriber на GitHub</a>
+       </p>
+
     </div>
     <div class="col-sm-6">
 
 <h1>Програма для відправки листів | C#</h1>
 
-<p></p>
+<br/>
+<p>Функція відправляє лист у форматі Html</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using System.Net;
+using System.Net.Mail;
+using System.IO;
+using System.Xml.XPath;
+using System.Xml.Xsl;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Threading;
+using System.Reflection;
+
+public static bool SendMail(string email, string subject, string company, string fullPathToHtmlBodyFile, SmtpInfo SmtpInfoItem)
+{
+    MailAddress fromMailAddress = new MailAddress(SmtpInfoItem.Email, company);
+    MailAddress toMailAddress = new MailAddress(email);
+
+    try
+    {
+        Console.Write(" -> " + email + ": ");
+
+        using (MailMessage mail = new MailMessage(fromMailAddress, toMailAddress))
+        using (SmtpClient client = new SmtpClient(SmtpInfoItem.SmtpServer, SmtpInfoItem.Port))
+        {
+            mail.Subject = subject;
+            mail.IsBodyHtml = true;
+            mail.Body = File.ReadAllText(fullPathToHtmlBodyFile);
+                    
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Timeout = 20000;
+            client.Credentials = new NetworkCredential(fromMailAddress.Address, SmtpInfoItem.Pass);
+            client.EnableSsl = true;
+
+            client.Send(mail);
+        }
+
+        Console.Write(" send\n");
+        return true;
+    }
+    catch (Exception e)
+    {
+        Console.Write(" error: " + e.Message + "\n");
+        return false;
+    }
+}
+</pre>
+
+    </div>
+</div>
 
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
+<p>Клас для Smtp інформації</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+public class SmtpInfo
+{
+	public SmtpInfo(string smtpServer, string email, string pass, int port)
+	{
+		SmtpServer = smtpServer;
+		Email = email;
+		Pass = pass;
+		Port = port;
+	}
+
+	public string SmtpServer { get; set; }
+	public string Email { get; set; }
+	public string Pass { get; set; }
+	public int Port { get; set; }
+}
+</pre>
+
+    </div>
+</div>
 
     </div>
     <div class="col-sm-3">
+
+        <p>Також</p>
+
+        <ul>
+            <li>
+                <a href="/post_31_12_2020.html">Валідація Email | C#</a>
+            </li>
+        </ul>
 
     </div>
   </div>
@@ -56,7 +140,7 @@
 </div>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
-      <p>2020</p>
+      <p>2021</p>
     </div>
   </body>
 </html>

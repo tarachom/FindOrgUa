@@ -1,0 +1,109 @@
+﻿
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>Erlang | Web Server</h1>
+
+<p>Робочий каталог  C:/Erlang </p>
+<h4>httpnet.erl | Конфігурація веб сервера</h4>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+-module(httpnet). 
+-export([start/0]). 
+
+start() -&gt;
+   inets:start(httpd, 
+[
+    {modules, [
+        mod_alias,
+        mod_auth,
+        mod_esi,
+        mod_actions,
+        mod_cgi,
+        mod_get,
+        mod_head,
+        mod_dir,
+        mod_log,
+        mod_disk_log
+    ]},
+
+    {port, 80},
+    {bind_address, "127.0.0.1"},
+    {server_name, "httpnet"},
+
+    {server_root, "C://HttpNet"},
+    {document_root, "C://HttpNet/htdocs"},
+    {directory_index, ["index.html"]},
+
+    {erl_script_alias, {"/erl", [scripts]}},
+
+    {error_log, "error.log"},
+    {security_log, "security.log"},
+    {transfer_log, "transfer.log"},
+
+    {mime_types, [
+        {"html", "text/html"},
+        {"css", "text/css"},
+        {"js", "application/x-javascript"}
+    ]},
+    {mime_type, "application/octet-stream"}
+]).
+</pre>
+
+    </div>
+</div>
+
+<br/>
+
+<h4>Запуск веб сервера</h4>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+&gt; cd("C:/Erlang").
+c:/erlang
+ok
+
+&gt; inets:start().
+ok
+
+&gt; httpnet:start().
+{ok,&lt;0.115.0&gt;}
+
+&gt; httpd:info(&lt;0.115.0&gt;).
+[{mime_types,[{"js","application/x-javascript"},
+              {"css","text/css"},
+              {"html","text/html"}]},
+ {server_name,"httpnet"},
+ {bind_address,{127,0,0,1}},
+ {modules,[mod_alias,mod_auth,mod_esi,mod_actions,mod_cgi,
+           mod_get,mod_head,mod_dir,mod_log,mod_disk_log]},
+ {mime_type,"application/octet-stream"},
+ {server_root,"C://HttpNet"},
+ {erl_script_alias,{"/erl",[scripts]}},
+ {directory_index,["index.html"]},
+ {port,80},
+ {transfer_log,&lt;0.123.0&gt;},
+ {security_log,&lt;0.122.0&gt;},
+ {error_log,&lt;0.121.0&gt;},
+ {document_root,"C://HttpNet/htdocs"}]
+</pre>
+
+    </div>
+</div>
+
+
+    </div>
+    <div class="col-sm-3">
+          
+    </div>
+  </div>
+</div>

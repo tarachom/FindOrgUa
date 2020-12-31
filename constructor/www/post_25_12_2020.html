@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><script src="bootstrap/jquery.min.js"></script><script src="bootstrap/popper.min.js"></script><script src="bootstrap/bootstrap.min.js"></script><script data-ad-client="ca-pub-8744330757055064" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script><script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-FQGF7F91SM');
-		</script></head>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FQGF7F91SM');
+    </script></head>
   <body>
     <div class="jumbotron jumbotron-fluid" style="padding-left:20px;margin-bottom:0;">
       <h1>В пошуках мудрості</h1>
@@ -25,27 +25,159 @@
        <div class="card">
           <img class="card-img-top" src="img/" alt="">
        </div>
-       <p>Інструмент трасформації даних XSLT | C#, XSLT</p>
+
+       <p>
+          <img src="img/git.png" /> <a href="https://github.com/tarachom/XsltCodeGeneration">Проєкт XsltCodeGeneration на GitHub</a>
+       </p>
+
+       <p>
+          Вивчай XSLT на <a href="https://www.w3schools.com/xml/xsl_intro.asp">w3schools.com</a>
+       </p>
 
     </div>
     <div class="col-sm-6">
 
 <h1>Інструмент трасформації даних XSLT | C#, XSLT</h1>
 
-<p>Інструмент трасформації даних XSLT | C#, XSLT</p>
+<p>Приклад генерації коду на C# за допомогою XSLT шаблону та XML даних</p>
 
 <br/>
+<p>XML - список полів класу</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+    
+<pre>
+&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;root&gt;
+  &lt;fields&gt;
+
+    &lt;field&gt;
+      &lt;name&gt;Name&lt;/name&gt;
+      &lt;type&gt;string&lt;/type&gt;
+      &lt;comment&gt;Назва поля&lt;/comment&gt;
+    &lt;/field&gt;
+
+    &lt;field&gt;
+      &lt;name&gt;Desc&lt;/name&gt;
+      &lt;type&gt;string&lt;/type&gt;
+      &lt;comment&gt;Опис поля&lt;/comment&gt;
+    &lt;/field&gt;
+
+    &lt;field&gt;
+      &lt;name&gt;Count&lt;/name&gt;
+      &lt;type&gt;int&lt;/type&gt;
+      &lt;comment&gt;Кількість&lt;/comment&gt;
+    &lt;/field&gt;
+
+    &lt;field&gt;
+      &lt;name&gt;Info&lt;/name&gt;
+      &lt;type&gt;string&lt;/type&gt;
+      &lt;comment&gt;Додаткова інформація&lt;/comment&gt;
+    &lt;/field&gt;
+
+  &lt;/fields&gt;
+&lt;/root&gt;
+</pre>
+
+    </div>
+</div>
+
 <br/>
+<p>XSLT Шаблон</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:output method="text" indent="yes" /&gt;
+
+  &lt;xsl:param name="datetime" select="datetime" /&gt;
+  
+    &lt;xsl:template match="/"&gt;
+/*
+ * Автоматично згенерований код 
+ * Дата: &lt;xsl:value-of select="$datetime"/&gt;
+ */
+
+//Клас Test
+//
+public class Test
+{
+    public Test() { }
+      &lt;xsl:for-each select="root/fields/field"&gt;
+    //&lt;xsl:value-of select="comment"/&gt;
+    public &lt;xsl:value-of select="type"/&gt;&lt;xsl:text&gt; &lt;/xsl:text&gt;&lt;xsl:value-of select="name"/&gt; { get; set; }
+      &lt;/xsl:for-each&gt;
+}
+
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+
+    </div>
+</div>
+
 <br/>
+<p>C# результат</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+/*
+ * Автоматично згенерований код 
+ * Дата: 21.01.2020
+ */
+
+//Клас Test
+//
+public class Test
+{
+    public Test() { }
+      
+    //Назва поля
+    public string Name { get; set; }
+      
+    //Опис поля
+    public string Desc { get; set; }
+      
+    //Кількість
+    public int Count { get; set; }
+      
+    //Додаткова інформація
+    public string Info { get; set; }
+      
+}
+</pre>
+
+    </div>
+</div>
+
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<hr />
+
+<p>C# Код для запуску трансформації</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using System.Xml.Xsl;
+
+static void Main(string[] args) 
+{
+        XslCompiledTransform xsltCodeGnerator = new XslCompiledTransform();
+        xsltCodeGnerator.Load("Fields.xslt");
+        xsltCodeGnerator.Transform("Fields.xml", "Fields.cs");
+}
+</pre>
+
+    </div>
+</div>
 
     </div>
     <div class="col-sm-3">
@@ -56,7 +188,7 @@
 </div>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0;margin-top:20px;">
-      <p>2020</p>
+      <p>2021</p>
     </div>
   </body>
 </html>
