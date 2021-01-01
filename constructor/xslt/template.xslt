@@ -18,7 +18,6 @@
 				<xsl:call-template name="body" />
 				<xsl:call-template name="footer" />
 			</body>
-
 		</html>
 		
 	</xsl:template>

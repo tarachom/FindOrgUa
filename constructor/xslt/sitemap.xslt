@@ -22,7 +22,6 @@
             <xsl:value-of select="$DateTime"/>  
           </lastmod>
           -->
-        
         </url>
 
       </xsl:for-each>
