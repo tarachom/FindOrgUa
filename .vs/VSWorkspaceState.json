@@ -1,12 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\constructor",
-    "\\constructor\\html",
-    "\\constructor\\www",
-    "\\constructor\\xml",
-    "\\constructor\\xslt"
+    "\\constructor"
   ],
-  "SelectedNode": "\\constructor\\html\\post_25_12_2020.html",
+  "SelectedNode": "\\constructor\\www",
   "PreviewInSolutionExplorer": false
 }
