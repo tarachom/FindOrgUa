@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\constructor",
-    "\\constructor\\html"
+    "\\constructor\\html",
+    "\\constructor\\xml"
   ],
-  "SelectedNode": "\\constructor\\www",
+  "SelectedNode": "\\constructor\\xml\\data.xml",
   "PreviewInSolutionExplorer": false
 }
