@@ -3,8 +3,9 @@
     "",
     "\\constructor",
     "\\constructor\\html",
-    "\\constructor\\xml"
+    "\\constructor\\xml",
+    "\\constructor\\xslt"
   ],
-  "SelectedNode": "\\constructor\\xml\\data.xml",
+  "SelectedNode": "\\constructor\\html\\post_03_01_2021.html",
   "PreviewInSolutionExplorer": false
 }

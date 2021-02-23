@@ -56,6 +56,38 @@
     </div>
 </div>
 
+<br/>
+
+<p>
+   В першому завданні <b>SELECT max(id) over() FROM TAB</b> використовується віконна функція.
+   Віконна функція виконує обчислення для набору стрічок. <br/>
+   <a href="https://postgrespro.ru/docs/postgresql/9.5/tutorial-window" target="_blank">Документація про віконні функції</a>
+</p>
+
+<br/>
+
+<p>
+   В другому завданні <b>SELECT count(NULLIF(cnt,5)) FROM TAB</b> використовується функція NULLIF(значение1, значение2) - 
+   повертає значення NULL, якщо значение1 дорівнює значение2; інакше вона повертає значение1.
+</p>
+
+<p>
+   Функція count обчислює кількість вхідних стрічок, для яких значення не рівно NULL.
+   Значить запит поверне 3 бо в стрічці де cnt = 5 функція NULLIF(cnt,5) поверне NULL, 
+   відповідно функція count це значення не буде враховувати.<br/>
+   <a href="https://postgrespro.ru/docs/postgrespro/9.5/functions-conditional#functions-nullif" target="_blank">Документація про NULLIF</a><br/>
+   <a href="https://postgrespro.ru/docs/postgresql/9.6/functions-aggregate" target="_blank">Документація про агрегатні функції</a>
+</p>
+
+<br/>
+
+<p>
+   В третьому завданні <b>SELECT count(id) FROM A GROUP BY cnt HAVING COUNT(*) > 1</b> використовується 
+   групування GROUP BY і фільтрування HAVING.<br/>
+
+   <a href="https://postgrespro.ru/docs/postgresql/9.5/queries-table-expressions#queries-group" target="_blank">Документація про GROUP BY та HAVING</a>
+   
+</p>
 
 <br/>
 <br/>
