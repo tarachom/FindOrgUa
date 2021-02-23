@@ -30,10 +30,17 @@
 
     Ответ:
 
+    4
+    4
+    4
+    4
+
     Что будет в результате выполнения запроса
     SELECT count(NULLIF(cnt,5)) FROM TAB
 
     Ответ:
+
+    3
 
     Что будет в результате выполнения запроса:
       SELECT count(id) FROM A
@@ -41,45 +48,14 @@
       HAVING COUNT(*) > 1
 
     Ответ:
-</pre>
 
-    </div>
-</div>
-
-<br/>
-<p>C#</p>
-
-<div class="card bg-light text-dark">
-    <div class="card-body">
-
-<pre>
-using System;
-using Npgsql;
-
-namespace ConsoleApp1
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
-            Connection.Open();
-
-            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
-
-            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
-
-            Console.WriteLine(nCommand.ExecuteScalar());
-
-            Console.ReadLine();
-        }
-    }
-}
+    2
 
 </pre>
 
     </div>
 </div>
+
 
 <br/>
 <br/>

@@ -19,6 +19,13 @@
 	<!-- Статті -->
 
   <!-- 2021 -->
+
+  <page>
+    <title>Здоров'я.</title>
+    <file>post_23_02_2021.html</file>
+    <menuactive>1</menuactive>
+  </page>
+  
   <page>
     <title>Яма Нияма (йога).</title>
     <file>post_03_01_2021.html</file>
