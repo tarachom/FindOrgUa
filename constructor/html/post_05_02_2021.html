@@ -1,0 +1,100 @@
+﻿
+    <div class="col-sm-3">
+       <div class="card">
+          <img class="card-img-top" src="img/postgresql.jpg" alt="">
+       </div>
+    </div>
+    <div class="col-sm-6">
+
+<h1>Тестове завдання на знання SQL | PostgreSQL</h1>
+
+<br/>
+<p>
+   Цікаве тестове завдання на знання SQL
+</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+Есть таблица TAB:
+    id  cnt
+    1   5
+    2   4
+    3   7
+    4   4
+
+    Что будет в результате выполнения запроса
+    SELECT max(id) over() FROM TAB 
+
+
+    Ответ:
+
+    Что будет в результате выполнения запроса
+    SELECT count(NULLIF(cnt,5)) FROM TAB
+
+    Ответ:
+
+    Что будет в результате выполнения запроса:
+      SELECT count(id) FROM A
+      GROUP BY cnt
+      HAVING COUNT(*) > 1
+
+    Ответ:
+</pre>
+
+    </div>
+</div>
+
+<br/>
+<p>C#</p>
+
+<div class="card bg-light text-dark">
+    <div class="card-body">
+
+<pre>
+using System;
+using Npgsql;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            NpgsqlConnection Connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Port=5433;");
+            Connection.Open();
+
+            string sql = "SELECT EXISTS(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('Conf'));";
+
+            NpgsqlCommand nCommand = new NpgsqlCommand(sqlTest, Connection);
+
+            Console.WriteLine(nCommand.ExecuteScalar());
+
+            Console.ReadLine();
+        }
+    }
+}
+
+</pre>
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+    </div>
+    <div class="col-sm-3">
+
+    </div>

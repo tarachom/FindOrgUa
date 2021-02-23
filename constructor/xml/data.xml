@@ -25,6 +25,12 @@
     <menuactive>1</menuactive>
   </page>
 
+	<page>
+		<title>Авторська сторінка поезії ієрм. Самуїла Мосціпана та молитви на оздоровлення на різні потреби.</title>
+		<file>post_06_02_2021.html</file>
+		<menuactive>1</menuactive>
+	</page>
+	
   <!-- 2020 -->
 	<page>
 		<title>Мир між людьми. Які в цьому запоруки. Як вирішувати конфліктні ситуації. Теорія і практика.</title>
@@ -118,5 +124,9 @@
 		<file>post_31_12_2020-9.html</file>
 		<menuactive>2</menuactive>
 	</page>
-  
+	<page>
+		<title>Тестове завдання на знання SQL | PostgreSQL</title>
+		<file>post_05_02_2021.html</file>
+		<menuactive>2</menuactive>
+	</page>
 </root>

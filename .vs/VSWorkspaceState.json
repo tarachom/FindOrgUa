@@ -3,9 +3,8 @@
     "",
     "\\constructor",
     "\\constructor\\html",
-    "\\constructor\\xml",
-    "\\constructor\\xslt"
+    "\\constructor\\xml"
   ],
-  "SelectedNode": "\\constructor\\xslt\\template.xslt",
+  "SelectedNode": "\\constructor\\xml\\data.xml",
   "PreviewInSolutionExplorer": false
 }
