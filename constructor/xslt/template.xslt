@@ -30,11 +30,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
-    <script src="bootstrap/jquery.min.js"></script>
-    <script src="bootstrap/popper.min.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="bootstrap/jquery.min.js" />
+    <script src="bootstrap/popper.min.js" />
+    <script src="bootstrap/bootstrap.min.js" />
 
     <!-- Google -->
+    <!--
     <script data-ad-client="ca-pub-8744330757055064" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FQGF7F91SM"></script>
     <script>
@@ -43,7 +44,7 @@
       gtag('js', new Date());
       gtag('config', 'G-FQGF7F91SM');
     </script>
-
+    -->
   </xsl:template>
   
 	<xsl:template name="top">
